@@ -50,9 +50,35 @@ export type Appointment = {
   notes?: string;
 };
 
+export type BloodType = 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
+
+export type UserProfile = {
+  fullName: string;
+  dateOfBirth: string;
+  gender: 'male' | 'female' | 'other';
+  bloodType?: BloodType;
+  allergies?: string[];
+  chronicConditions?: string[];
+  medications?: string[];
+  emergencyContact?: {
+    name: string;
+    relationship: string;
+    phone: string;
+  };
+  address?: {
+    street: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
+  };
+};
+
 export type User = {
   id: string;
   name: string;
-  email: string;
+  email?: string;
+  phone?: string;
   appointments: Appointment[];
+  profile?: UserProfile;
 };
