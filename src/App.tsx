@@ -54,6 +54,15 @@ const AppRoutes = () => {
           <Route path="/create-profile" element={<CreateProfile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/language-selection" element={<LanguageSelection />} />
+          
+          {/* Redirect /signup to /register for consistency */}
+          <Route path="/signup" element={<Navigate to="/register" replace />} />
+          
+          {/* Add placeholders for routes mentioned in the navbar */}
+          <Route path="/services" element={<NotFound />} />
+          <Route path="/about" element={<NotFound />} />
+          <Route path="/contact" element={<NotFound />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

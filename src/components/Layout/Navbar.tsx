@@ -4,6 +4,17 @@ import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X, User, Calendar, Settings } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
+import { 
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle
+} from "@/components/ui/navigation-menu";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,23 +67,25 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
-          <ul className="flex space-x-8">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  to={link.path}
-                  className={cn(
-                    'font-medium transition-colors hover:text-medical-600',
-                    location.pathname === link.path
-                      ? 'text-medical-600'
-                      : 'text-gray-700'
-                  )}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NavigationMenu>
+            <NavigationMenuList>
+              {navLinks.map((link) => (
+                <NavigationMenuItem key={link.name}>
+                  <Link
+                    to={link.path}
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      location.pathname === link.path
+                        ? 'text-medical-600 bg-medical-50'
+                        : 'text-gray-700'
+                    )}
+                  >
+                    {link.name}
+                  </Link>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
         </nav>
 
         {/* Auth Buttons - Desktop */}
@@ -91,17 +104,15 @@ const Navbar = () => {
             <Settings className="w-4 h-4 mr-1" />
             {t('common.settings')}
           </Link>
-          <Link
-            to="/login"
-            className="px-4 py-2 rounded-md text-medical-600 font-medium hover:bg-medical-50 transition-colors"
-          >
-            {t('common.login')}
+          <Link to="/login">
+            <Button variant="outline" className="border-medical-600 text-medical-600 hover:bg-medical-50">
+              {t('common.login')}
+            </Button>
           </Link>
-          <Link
-            to="/signup"
-            className="px-4 py-2 rounded-md bg-medical-600 text-white font-medium hover:bg-medical-700 transition-colors"
-          >
-            {t('common.signup')}
+          <Link to="/register">
+            <Button variant="medical">
+              {t('common.signup')}
+            </Button>
           </Link>
         </div>
 
@@ -109,6 +120,7 @@ const Navbar = () => {
         <button
           className="md:hidden text-gray-700 focus:outline-none"
           onClick={toggleMenu}
+          aria-label="Toggle mobile menu"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -156,17 +168,21 @@ const Navbar = () => {
               <li className="flex space-x-4 pt-4">
                 <Link
                   to="/login"
-                  className="px-4 py-2 w-1/2 text-center rounded-md border border-medical-600 text-medical-600 font-medium hover:bg-medical-50 transition-colors"
+                  className="w-1/2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('common.login')}
+                  <Button variant="outline" className="w-full border-medical-600 text-medical-600">
+                    {t('common.login')}
+                  </Button>
                 </Link>
                 <Link
-                  to="/signup"
-                  className="px-4 py-2 w-1/2 text-center rounded-md bg-medical-600 text-white font-medium hover:bg-medical-700 transition-colors"
+                  to="/register"
+                  className="w-1/2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('common.signup')}
+                  <Button variant="medical" className="w-full">
+                    {t('common.signup')}
+                  </Button>
                 </Link>
               </li>
             </ul>
