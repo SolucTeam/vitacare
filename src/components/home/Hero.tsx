@@ -22,12 +22,12 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
             <Link to="/about">
-              <Button variant="default" className="bg-medical-600 text-white px-8 py-6 text-lg rounded-full hover:bg-medical-700 transition-colors">
+              <Button variant="medical" size="xl" className="rounded-full">
                 {t('common.aboutUs', 'About Us')}
               </Button>
             </Link>
             <Link to="/booking">
-              <Button variant="outline" className="bg-white border-2 border-gray-300 text-gray-800 px-8 py-6 text-lg rounded-full hover:bg-gray-50 transition-colors">
+              <Button variant="outline" size="xl" className="rounded-full">
                 {t('common.bookAppointment', 'Book an Appointment')}
               </Button>
             </Link>

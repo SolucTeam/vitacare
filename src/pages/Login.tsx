@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -28,7 +27,6 @@ const Login = () => {
   const [verificationContact, setVerificationContact] = useState("");
   const navigate = useNavigate();
 
-  // Create schemas based on the current language
   const emailSchema = z.object({
     email: z.string().email({ message: "Veuillez saisir un email valide." }),
     password: z.string().min(1, { message: "Le mot de passe est requis." }),
@@ -98,7 +96,6 @@ const Login = () => {
     setShowOTP(false);
   };
 
-  // Show OTP verification screen if we're in verification mode
   if (showOTP) {
     return (
       <div className="container max-w-md mx-auto pt-8 pb-16">
@@ -201,7 +198,7 @@ const Login = () => {
                 )}
               />
 
-              <Button type="submit" className="w-full">
+              <Button type="submit" variant="medical" className="w-full">
                 {t('auth.login')} <LogIn className="ml-2 h-4 w-4" />
               </Button>
 
@@ -283,7 +280,7 @@ const Login = () => {
                 )}
               />
 
-              <Button type="submit" className="w-full">
+              <Button type="submit" variant="medical" className="w-full">
                 {t('auth.login')} <LogIn className="ml-2 h-4 w-4" />
               </Button>
 

@@ -164,7 +164,7 @@ const PasswordRecovery = () => {
               >
                 <ArrowLeft className="mr-2 h-4 w-4" /> {t('common.back')}
               </Button>
-              <Button type="submit" className="flex-1">
+              <Button type="submit" variant="medical" className="flex-1">
                 {t('auth.resetPassword')} <KeyRound className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -219,7 +219,7 @@ const PasswordRecovery = () => {
                 )}
               />
 
-              <Button type="submit" className="w-full">
+              <Button type="submit" variant="medical" className="w-full">
                 {t('auth.sendRecoveryLink')} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
 
@@ -260,7 +260,7 @@ const PasswordRecovery = () => {
                 )}
               />
 
-              <Button type="submit" className="w-full">
+              <Button type="submit" variant="medical" className="w-full">
                 {t('auth.sendRecoveryCode')} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
 

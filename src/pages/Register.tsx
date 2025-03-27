@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -112,7 +111,6 @@ const Register = () => {
     setShowOTP(false);
   };
 
-  // Show OTP verification screen if we're in verification mode
   if (showOTP) {
     return (
       <div className="container max-w-md mx-auto pt-8 pb-16">
@@ -237,14 +235,14 @@ const Register = () => {
                 )}
               />
 
-              <Button type="submit" className="w-full">
-                S'inscrire <ArrowRight className="ml-2 h-4 w-4" />
+              <Button type="submit" variant="medical" className="w-full">
+                {t('auth.register')} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
 
               <div className="text-center text-sm text-gray-500">
-                Vous avez déjà un compte?{" "}
+                {t('auth.haveAccount')}{" "}
                 <Link to="/login" className="font-medium text-medical-600 hover:underline">
-                  Connectez-vous
+                  {t('auth.login')}
                 </Link>
               </div>
             </form>
@@ -341,14 +339,14 @@ const Register = () => {
                 )}
               />
 
-              <Button type="submit" className="w-full">
-                S'inscrire <ArrowRight className="ml-2 h-4 w-4" />
+              <Button type="submit" variant="medical" className="w-full">
+                {t('auth.register')} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
 
               <div className="text-center text-sm text-gray-500">
-                Vous avez déjà un compte?{" "}
+                {t('auth.haveAccount')}{" "}
                 <Link to="/login" className="font-medium text-medical-600 hover:underline">
-                  Connectez-vous
+                  {t('auth.login')}
                 </Link>
               </div>
             </form>
