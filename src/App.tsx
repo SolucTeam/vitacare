@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Layout/Navbar";
 import Footer from "./components/Layout/Footer";
 import Index from "./pages/Index";
@@ -15,32 +15,62 @@ import NotFound from "./pages/NotFound";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import CreateProfile from "./pages/CreateProfile";
+import Settings from "./pages/Settings";
+import LanguageSelection from "./pages/LanguageSelection";
+import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
+
+// Import i18n
+import "./i18n";
 
 const queryClient = new QueryClient();
+
+// Component to handle conditional rendering based on first visit
+const AppRoutes = () => {
+  const { isFirstVisit } = useLanguage();
+
+  if (isFirstVisit) {
+    return (
+      <Routes>
+        <Route path="/language-selection" element={<LanguageSelection />} />
+        <Route path="*" element={<Navigate to="/language-selection" replace />} />
+      </Routes>
+    );
+  }
+
+  return (
+    <>
+      <Navbar />
+      <main className="min-h-screen pt-16">
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/doctors/:id" element={<DoctorProfile />} />
+          <Route path="/booking/:doctorId" element={<Booking />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-profile" element={<CreateProfile />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/language-selection" element={<LanguageSelection />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Navbar />
-        <main className="min-h-screen pt-16">
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/doctors/:id" element={<DoctorProfile />} />
-            <Route path="/booking/:doctorId" element={<Booking />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/create-profile" element={<CreateProfile />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </BrowserRouter>
+      <LanguageProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

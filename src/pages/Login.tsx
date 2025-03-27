@@ -18,25 +18,28 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { Mail, Phone, LogIn } from "lucide-react";
-
-const emailSchema = z.object({
-  email: z.string().email({ message: "Veuillez saisir un email valide." }),
-  password: z.string().min(1, { message: "Le mot de passe est requis." }),
-  rememberMe: z.boolean().optional(),
-});
-
-const phoneSchema = z.object({
-  phone: z.string().min(8, { message: "Veuillez saisir un numéro de téléphone valide." }),
-  password: z.string().min(1, { message: "Le mot de passe est requis." }),
-  rememberMe: z.boolean().optional(),
-});
-
-type EmailFormValues = z.infer<typeof emailSchema>;
-type PhoneFormValues = z.infer<typeof phoneSchema>;
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
   const [method, setMethod] = useState<"email" | "phone">("email");
   const navigate = useNavigate();
+
+  // Create schemas based on the current language
+  const emailSchema = z.object({
+    email: z.string().email({ message: "Veuillez saisir un email valide." }),
+    password: z.string().min(1, { message: "Le mot de passe est requis." }),
+    rememberMe: z.boolean().optional(),
+  });
+
+  const phoneSchema = z.object({
+    phone: z.string().min(8, { message: "Veuillez saisir un numéro de téléphone valide." }),
+    password: z.string().min(1, { message: "Le mot de passe est requis." }),
+    rememberMe: z.boolean().optional(),
+  });
+
+  type EmailFormValues = z.infer<typeof emailSchema>;
+  type PhoneFormValues = z.infer<typeof phoneSchema>;
 
   const emailForm = useForm<EmailFormValues>({
     resolver: zodResolver(emailSchema),
@@ -58,7 +61,7 @@ const Login = () => {
 
   const onSubmitEmail = (data: EmailFormValues) => {
     console.log("Email login data:", data);
-    toast.success("Connexion réussie!");
+    toast.success(t('auth.loginSuccess'));
     
     // For demo purposes we'll simulate logging in
     setTimeout(() => {
@@ -68,7 +71,7 @@ const Login = () => {
 
   const onSubmitPhone = (data: PhoneFormValues) => {
     console.log("Phone login data:", data);
-    toast.success("Connexion réussie!");
+    toast.success(t('auth.loginSuccess'));
     
     // For demo purposes we'll simulate logging in
     setTimeout(() => {
@@ -79,9 +82,9 @@ const Login = () => {
   return (
     <div className="container max-w-md mx-auto pt-8 pb-16">
       <div className="space-y-4 text-center mb-8">
-        <h1 className="text-3xl font-bold">Connexion</h1>
+        <h1 className="text-3xl font-bold">{t('auth.login')}</h1>
         <p className="text-gray-500">
-          Connectez-vous pour accéder à votre compte
+          {t('auth.connectToAccount')}
         </p>
       </div>
 
@@ -89,11 +92,11 @@ const Login = () => {
         <TabsList className="grid grid-cols-2 mb-8">
           <TabsTrigger value="email" className="flex items-center gap-2">
             <Mail className="h-4 w-4" />
-            Email
+            {t('auth.email')}
           </TabsTrigger>
           <TabsTrigger value="phone" className="flex items-center gap-2">
             <Phone className="h-4 w-4" />
-            Téléphone
+            {t('auth.phone')}
           </TabsTrigger>
         </TabsList>
 
@@ -105,7 +108,7 @@ const Login = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>{t('auth.email')}</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
@@ -127,12 +130,12 @@ const Login = () => {
                 render={({ field }) => (
                   <FormItem>
                     <div className="flex items-center justify-between">
-                      <FormLabel>Mot de passe</FormLabel>
+                      <FormLabel>{t('auth.password')}</FormLabel>
                       <Link 
                         to="/forgot-password" 
                         className="text-sm font-medium text-medical-600 hover:underline"
                       >
-                        Mot de passe oublié?
+                        {t('auth.forgotPassword')}
                       </Link>
                     </div>
                     <FormControl>
@@ -159,20 +162,20 @@ const Login = () => {
                       />
                     </FormControl>
                     <div className="leading-none">
-                      <FormLabel>Se souvenir de moi</FormLabel>
+                      <FormLabel>{t('auth.rememberMe')}</FormLabel>
                     </div>
                   </FormItem>
                 )}
               />
 
               <Button type="submit" className="w-full">
-                Se connecter <LogIn className="ml-2 h-4 w-4" />
+                {t('auth.login')} <LogIn className="ml-2 h-4 w-4" />
               </Button>
 
               <div className="text-center text-sm text-gray-500">
-                Vous n'avez pas de compte?{" "}
+                {t('auth.noAccount')}{" "}
                 <Link to="/register" className="font-medium text-medical-600 hover:underline">
-                  S'inscrire
+                  {t('auth.register')}
                 </Link>
               </div>
             </form>
@@ -187,7 +190,7 @@ const Login = () => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Numéro de téléphone</FormLabel>
+                    <FormLabel>{t('auth.phoneNumber')}</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
@@ -209,12 +212,12 @@ const Login = () => {
                 render={({ field }) => (
                   <FormItem>
                     <div className="flex items-center justify-between">
-                      <FormLabel>Mot de passe</FormLabel>
+                      <FormLabel>{t('auth.password')}</FormLabel>
                       <Link 
                         to="/forgot-password" 
                         className="text-sm font-medium text-medical-600 hover:underline"
                       >
-                        Mot de passe oublié?
+                        {t('auth.forgotPassword')}
                       </Link>
                     </div>
                     <FormControl>
@@ -241,20 +244,20 @@ const Login = () => {
                       />
                     </FormControl>
                     <div className="leading-none">
-                      <FormLabel>Se souvenir de moi</FormLabel>
+                      <FormLabel>{t('auth.rememberMe')}</FormLabel>
                     </div>
                   </FormItem>
                 )}
               />
 
               <Button type="submit" className="w-full">
-                Se connecter <LogIn className="ml-2 h-4 w-4" />
+                {t('auth.login')} <LogIn className="ml-2 h-4 w-4" />
               </Button>
 
               <div className="text-center text-sm text-gray-500">
-                Vous n'avez pas de compte?{" "}
+                {t('auth.noAccount')}{" "}
                 <Link to="/register" className="font-medium text-medical-600 hover:underline">
-                  S'inscrire
+                  {t('auth.register')}
                 </Link>
               </div>
             </form>

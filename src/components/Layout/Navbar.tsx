@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { Menu, X, User, Calendar } from 'lucide-react';
+import { Menu, X, User, Calendar, Settings } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,11 +29,11 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Find Doctors', path: '/search' },
-    { name: 'Services', path: '/services' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { name: t('common.home'), path: '/' },
+    { name: t('common.findDoctors'), path: '/search' },
+    { name: t('common.services'), path: '/services' },
+    { name: t('common.about'), path: '/about' },
+    { name: t('common.contact'), path: '/contact' },
   ];
 
   return (
@@ -48,8 +50,8 @@ const Navbar = () => {
           to="/" 
           className="text-2xl font-bold text-medical-700 flex items-center"
         >
-          <span className="bg-medical-500 text-white p-1 rounded-md mr-2">CL</span>
-          CureLink
+          <span className="bg-medical-500 text-white p-1 rounded-md mr-2">VC</span>
+          {t('app.name')}
         </Link>
 
         {/* Desktop Navigation */}
@@ -80,19 +82,26 @@ const Navbar = () => {
             className="flex items-center text-sm font-medium text-gray-700 hover:text-medical-600 transition-colors"
           >
             <Calendar className="w-4 h-4 mr-1" />
-            My Appointments
+            {t('common.myAppointments')}
+          </Link>
+          <Link
+            to="/settings"
+            className="flex items-center text-sm font-medium text-gray-700 hover:text-medical-600 transition-colors"
+          >
+            <Settings className="w-4 h-4 mr-1" />
+            {t('common.settings')}
           </Link>
           <Link
             to="/login"
             className="px-4 py-2 rounded-md text-medical-600 font-medium hover:bg-medical-50 transition-colors"
           >
-            Log in
+            {t('common.login')}
           </Link>
           <Link
             to="/signup"
             className="px-4 py-2 rounded-md bg-medical-600 text-white font-medium hover:bg-medical-700 transition-colors"
           >
-            Sign up
+            {t('common.signup')}
           </Link>
         </div>
 
@@ -132,7 +141,16 @@ const Navbar = () => {
                   className="block py-2 text-gray-700 font-medium hover:text-medical-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  My Appointments
+                  {t('common.myAppointments')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/settings"
+                  className="block py-2 text-gray-700 font-medium hover:text-medical-600 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {t('common.settings')}
                 </Link>
               </li>
               <li className="flex space-x-4 pt-4">
@@ -141,14 +159,14 @@ const Navbar = () => {
                   className="px-4 py-2 w-1/2 text-center rounded-md border border-medical-600 text-medical-600 font-medium hover:bg-medical-50 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Log in
+                  {t('common.login')}
                 </Link>
                 <Link
                   to="/signup"
                   className="px-4 py-2 w-1/2 text-center rounded-md bg-medical-600 text-white font-medium hover:bg-medical-700 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Sign up
+                  {t('common.signup')}
                 </Link>
               </li>
             </ul>

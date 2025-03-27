@@ -1,0 +1,51 @@
+
+{
+  "app": {
+    "name": "VitaCare"
+  },
+  "common": {
+    "home": "Accueil",
+    "findDoctors": "Trouver des médecins",
+    "services": "Services",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "signup": "S'inscrire",
+    "myAppointments": "Mes rendez-vous",
+    "settings": "Paramètres",
+    "language": "Langue"
+  },
+  "auth": {
+    "login": "Connexion",
+    "connectToAccount": "Connectez-vous pour accéder à votre compte",
+    "email": "Email",
+    "phone": "Téléphone",
+    "phoneNumber": "Numéro de téléphone",
+    "password": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié?",
+    "rememberMe": "Se souvenir de moi",
+    "noAccount": "Vous n'avez pas de compte?",
+    "register": "S'inscrire",
+    "loginSuccess": "Connexion réussie!"
+  },
+  "footer": {
+    "connectingPatients": "Mettre en relation les patients avec les meilleurs professionnels de santé pour des consultations en personne et à distance.",
+    "quickLinks": "Liens rapides",
+    "forPatients": "Pour les patients",
+    "contactUs": "Contactez-nous",
+    "copyright": "Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "cookies": "Politique des cookies"
+  },
+  "languageSelection": {
+    "title": "Choisissez votre langue",
+    "subtitle": "Sélectionnez votre langue préférée",
+    "english": "Anglais",
+    "french": "Français",
+    "continue": "Continuer"
+  },
+  "settings": {
+    "changeLanguage": "Changer de langue"
+  }
+}

@@ -1,0 +1,51 @@
+
+{
+  "app": {
+    "name": "VitaCare"
+  },
+  "common": {
+    "home": "Home",
+    "findDoctors": "Find Doctors",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Log in",
+    "signup": "Sign up",
+    "myAppointments": "My Appointments",
+    "settings": "Settings",
+    "language": "Language"
+  },
+  "auth": {
+    "login": "Login",
+    "connectToAccount": "Login to access your account",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneNumber": "Phone number",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "rememberMe": "Remember me",
+    "noAccount": "Don't have an account?",
+    "register": "Sign up",
+    "loginSuccess": "Login successful!"
+  },
+  "footer": {
+    "connectingPatients": "Connecting patients with the best healthcare professionals for in-person and remote consultations.",
+    "quickLinks": "Quick Links",
+    "forPatients": "For Patients",
+    "contactUs": "Contact Us",
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookies Policy"
+  },
+  "languageSelection": {
+    "title": "Choose your language",
+    "subtitle": "Select your preferred language",
+    "english": "English",
+    "french": "French",
+    "continue": "Continue"
+  },
+  "settings": {
+    "changeLanguage": "Change Language"
+  }
+}
