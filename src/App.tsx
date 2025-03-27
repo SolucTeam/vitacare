@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,6 +18,9 @@ import CreateProfile from "./pages/CreateProfile";
 import Settings from "./pages/Settings";
 import LanguageSelection from "./pages/LanguageSelection";
 import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
+import Services from "./pages/Services";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 // Import i18n
 import "./i18n";
@@ -55,13 +57,13 @@ const AppRoutes = () => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/language-selection" element={<LanguageSelection />} />
           
+          {/* New pages */}
+          <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          
           {/* Redirect /signup to /register for consistency */}
           <Route path="/signup" element={<Navigate to="/register" replace />} />
-          
-          {/* Add placeholders for routes mentioned in the navbar */}
-          <Route path="/services" element={<NotFound />} />
-          <Route path="/about" element={<NotFound />} />
-          <Route path="/contact" element={<NotFound />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -114,5 +114,100 @@
     "passwordLength": "Le mot de passe doit contenir au moins 8 caractères",
     "passwordMatch": "Les mots de passe ne correspondent pas",
     "acceptTerms": "Vous devez accepter les conditions d'utilisation"
+  },
+  "services": {
+    "title": "Nos Services de Santé",
+    "subtitle": "Nous offrons une gamme complète de services de santé conçus pour répondre à vos besoins médicaux avec excellence et compassion.",
+    "emergency": {
+      "title": "Besoin d'une Assistance d'Urgence?",
+      "description": "Notre équipe médicale est disponible 24/7 pour fournir un soutien immédiat pour les situations médicales urgentes.",
+      "callNow": "Appelez Maintenant",
+      "scheduleAppointment": "Prendre Rendez-vous"
+    },
+    "whyChoose": {
+      "title": "Pourquoi Choisir VitaCare?",
+      "expertCare": {
+        "title": "Soins d'Expert",
+        "description": "Notre équipe de professionnels de santé hautement qualifiés est dédiée à fournir des services médicaux exceptionnels."
+      },
+      "personalizedApproach": {
+        "title": "Approche Personnalisée",
+        "description": "Nous développons des plans de traitement individualisés adaptés à vos besoins et objectifs de santé spécifiques."
+      },
+      "advancedTechnology": {
+        "title": "Technologie Avancée",
+        "description": "Nous utilisons des technologies médicales de pointe et des approches innovantes pour offrir le plus haut standard de soins."
+      }
+    }
+  },
+  "about": {
+    "title": "À Propos de VitaCare",
+    "subtitle": "Transformer les soins de santé par l'innovation, la compassion et l'excellence pour améliorer le bien-être des individus et des communautés.",
+    "ourStory": {
+      "title": "Notre Histoire",
+      "part1": "Fondée en 2009, VitaCare a commencé avec une mission simple : rendre les soins de santé de qualité accessibles à tous. Ce qui a commencé comme une petite clinique avec cinq médecins dévoués est devenu un réseau de soins de santé complet servant des communautés à travers le pays.",
+      "part2": "Au fil des ans, nous avons élargi nos services pour répondre aux besoins évolutifs de nos patients tout en maintenant notre engagement envers les soins personnalisés. Nous avons adopté les avancées technologiques pour améliorer l'expérience des patients et les résultats de santé.",
+      "part3": "Aujourd'hui, VitaCare est un leader dans les solutions de soins de santé innovantes, reliant les patients avec des professionnels de santé qualifiés via des plateformes traditionnelles et numériques. Notre voyage continue alors que nous travaillons sans relâche pour redéfinir la prestation des soins de santé pour le monde moderne."
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Fournir des services de santé accessibles et de haute qualité qui permettent aux individus d'atteindre une santé et un bien-être optimaux grâce à des soins personnalisés, à l'innovation et à la compassion."
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Être le partenaire de santé le plus fiable, menant la transformation de la prestation des soins de santé grâce à des approches centrées sur le patient, à l'innovation technologique et à l'excellence dans la pratique clinique."
+    },
+    "leadership": {
+      "title": "Notre Équipe de Direction",
+      "description": "Dirigée par des professionnels de la santé expérimentés, notre équipe de direction s'engage à faire progresser notre mission et nos valeurs.",
+      "meetTeam": "Rencontrer Notre Équipe"
+    },
+    "joinUs": {
+      "title": "Rejoignez Notre Équipe",
+      "description": "Nous sommes toujours à la recherche de professionnels de la santé talentueux qui partagent notre passion pour améliorer des vies grâce à des soins de santé de qualité.",
+      "viewCareers": "Voir les Opportunités de Carrière"
+    }
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "subtitle": "Vous avez des questions ou besoin d'assistance? Nous sommes là pour vous aider. Contactez notre équipe pour du soutien avec vos besoins de santé.",
+    "form": {
+      "getInTouch": "Entrer en Contact",
+      "fullName": "Nom Complet",
+      "email": "Adresse Email",
+      "phone": "Téléphone (Optionnel)",
+      "subject": "Sujet",
+      "message": "Message",
+      "send": "Envoyer le Message"
+    },
+    "assistance": {
+      "title": "Besoin d'une Assistance Immédiate?",
+      "description": "Notre équipe de support est disponible 24/7 pour aider avec les questions urgentes.",
+      "callHotline": "Appeler Notre Ligne d'Assistance"
+    },
+    "faq": {
+      "title": "Questions Fréquemment Posées",
+      "appointment": {
+        "question": "Comment puis-je prendre rendez-vous?",
+        "answer": "Vous pouvez prendre rendez-vous via notre site web, notre application mobile, ou en appelant notre service client au +1 (234) 567-890."
+      },
+      "insurance": {
+        "question": "Quels plans d'assurance acceptez-vous?",
+        "answer": "Nous acceptons la plupart des principaux plans d'assurance. Veuillez contacter notre service de facturation pour des informations spécifiques sur votre couverture."
+      },
+      "records": {
+        "question": "Comment puis-je accéder à mes dossiers médicaux?",
+        "answer": "Vous pouvez accéder à vos dossiers médicaux via notre portail patient. Si vous avez besoin d'aide, veuillez contacter notre équipe de support."
+      }
+    },
+    "connect": {
+      "title": "Connectez-Vous Avec Nous",
+      "followUs": "Suivez-nous sur les réseaux sociaux pour des mises à jour et des conseils de santé",
+      "newsletter": {
+        "title": "Abonnez-vous à Notre Newsletter",
+        "description": "Restez informé des conseils de santé, des nouvelles et des offres spéciales.",
+        "subscribe": "S'abonner"
+      }
+    }
   }
 }

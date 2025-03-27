@@ -114,5 +114,100 @@
     "passwordLength": "Password must be at least 8 characters",
     "passwordMatch": "Passwords do not match",
     "acceptTerms": "You must accept the terms of service"
+  },
+  "services": {
+    "title": "Our Healthcare Services",
+    "subtitle": "We offer a comprehensive range of healthcare services designed to meet your medical needs with excellence and compassion.",
+    "emergency": {
+      "title": "Need Emergency Assistance?",
+      "description": "Our medical team is available 24/7 to provide immediate support for urgent medical situations.",
+      "callNow": "Call Now",
+      "scheduleAppointment": "Schedule Appointment"
+    },
+    "whyChoose": {
+      "title": "Why Choose VitaCare?",
+      "expertCare": {
+        "title": "Expert Care",
+        "description": "Our team of highly qualified healthcare professionals is dedicated to providing exceptional medical services."
+      },
+      "personalizedApproach": {
+        "title": "Personalized Approach",
+        "description": "We develop individualized treatment plans tailored to your specific health needs and goals."
+      },
+      "advancedTechnology": {
+        "title": "Advanced Technology",
+        "description": "We utilize cutting-edge medical technology and innovative approaches to deliver the highest standard of care."
+      }
+    }
+  },
+  "about": {
+    "title": "About VitaCare",
+    "subtitle": "Transforming healthcare through innovation, compassion, and excellence to improve the well-being of individuals and communities.",
+    "ourStory": {
+      "title": "Our Story",
+      "part1": "Founded in 2009, VitaCare began with a simple mission: to make quality healthcare accessible to everyone. What started as a small clinic with five dedicated physicians has grown into a comprehensive healthcare network serving communities across the country.",
+      "part2": "Over the years, we've expanded our services to address the evolving healthcare needs of our patients while maintaining our commitment to personalized care. We've embraced technological advancements to enhance the patient experience and improve healthcare outcomes.",
+      "part3": "Today, VitaCare stands as a leader in innovative healthcare solutions, connecting patients with skilled healthcare professionals through both traditional and digital platforms. Our journey continues as we work tirelessly to redefine healthcare delivery for the modern world."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To provide accessible, high-quality healthcare services that empower individuals to achieve optimal health and well-being through personalized care, innovation, and compassion."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the most trusted healthcare partner, leading the transformation of healthcare delivery through patient-centered approaches, technological innovation, and excellence in clinical practice."
+    },
+    "leadership": {
+      "title": "Our Leadership Team",
+      "description": "Led by experienced healthcare professionals, our leadership team is committed to advancing our mission and values.",
+      "meetTeam": "Meet Our Team"
+    },
+    "joinUs": {
+      "title": "Join Our Team",
+      "description": "We're always looking for talented healthcare professionals who share our passion for improving lives through quality healthcare.",
+      "viewCareers": "View Career Opportunities"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions or need assistance? We're here to help. Reach out to our team for support with your healthcare needs.",
+    "form": {
+      "getInTouch": "Get in Touch",
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone (Optional)",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message"
+    },
+    "assistance": {
+      "title": "Need Immediate Assistance?",
+      "description": "Our support team is available 24/7 to help with urgent matters.",
+      "callHotline": "Call Our Hotline"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "appointment": {
+        "question": "How can I schedule an appointment?",
+        "answer": "You can schedule an appointment through our website, mobile app, or by calling our customer service line at +1 (234) 567-890."
+      },
+      "insurance": {
+        "question": "What insurance plans do you accept?",
+        "answer": "We accept most major insurance plans. Please contact our billing department for specific information about your coverage."
+      },
+      "records": {
+        "question": "How do I access my medical records?",
+        "answer": "You can access your medical records through our patient portal. If you need assistance, please contact our support team."
+      }
+    },
+    "connect": {
+      "title": "Connect With Us",
+      "followUs": "Follow us on social media for updates and health tips",
+      "newsletter": {
+        "title": "Subscribe to Our Newsletter",
+        "description": "Stay updated with health tips, news, and special offers.",
+        "subscribe": "Subscribe"
+      }
+    }
   }
 }
