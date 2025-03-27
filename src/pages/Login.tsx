@@ -19,10 +19,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { Mail, Phone, LogIn } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import OTPVerification from "@/components/auth/OTPVerification";
 
 const Login = () => {
   const { t } = useTranslation();
   const [method, setMethod] = useState<"email" | "phone">("email");
+  const [showOTP, setShowOTP] = useState(false);
+  const [verificationContact, setVerificationContact] = useState("");
   const navigate = useNavigate();
 
   // Create schemas based on the current language
@@ -61,6 +64,23 @@ const Login = () => {
 
   const onSubmitEmail = (data: EmailFormValues) => {
     console.log("Email login data:", data);
+    
+    // For demo purposes, we'll trigger 2FA
+    setVerificationContact(data.email);
+    setShowOTP(true);
+  };
+
+  const onSubmitPhone = (data: PhoneFormValues) => {
+    console.log("Phone login data:", data);
+    
+    // For demo purposes, we'll trigger 2FA
+    setVerificationContact(data.phone);
+    setShowOTP(true);
+  };
+
+  const handleVerificationComplete = () => {
+    // When OTP verification is complete, proceed with login
+    setShowOTP(false);
     toast.success(t('auth.loginSuccess'));
     
     // For demo purposes we'll simulate logging in
@@ -69,15 +89,28 @@ const Login = () => {
     }, 1500);
   };
 
-  const onSubmitPhone = (data: PhoneFormValues) => {
-    console.log("Phone login data:", data);
-    toast.success(t('auth.loginSuccess'));
-    
-    // For demo purposes we'll simulate logging in
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 1500);
+  const handleResendCode = () => {
+    // In a real app, this would trigger a new OTP to be sent
+    console.log("Resending code to", verificationContact);
   };
+
+  const handleCancelVerification = () => {
+    setShowOTP(false);
+  };
+
+  // Show OTP verification screen if we're in verification mode
+  if (showOTP) {
+    return (
+      <div className="container max-w-md mx-auto pt-8 pb-16">
+        <OTPVerification
+          phoneOrEmail={verificationContact}
+          onVerificationComplete={handleVerificationComplete}
+          onResendCode={handleResendCode}
+          onCancel={handleCancelVerification}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="container max-w-md mx-auto pt-8 pb-16">

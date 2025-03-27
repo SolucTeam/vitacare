@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import PasswordRecovery from "./pages/PasswordRecovery";
 import CreateProfile from "./pages/CreateProfile";
 import Settings from "./pages/Settings";
 import LanguageSelection from "./pages/LanguageSelection";
@@ -49,6 +50,7 @@ const AppRoutes = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<PasswordRecovery />} />
           <Route path="/create-profile" element={<CreateProfile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/language-selection" element={<LanguageSelection />} />

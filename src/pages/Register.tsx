@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Form,
   FormControl,
@@ -17,42 +16,47 @@ import {
 } from "@/components/ui/form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Mail, Phone, User, ArrowRight, ArrowLeft } from "lucide-react";
-
-const emailSchema = z.object({
-  email: z.string().email({ message: "Veuillez saisir un email valide." }),
-  password: z
-    .string()
-    .min(8, { message: "Le mot de passe doit contenir au moins 8 caractères." }),
-  confirmPassword: z.string(),
-  acceptTerms: z.boolean().refine((val) => val === true, {
-    message: "Vous devez accepter les conditions d'utilisation.",
-  }),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Les mots de passe ne correspondent pas.",
-  path: ["confirmPassword"],
-});
-
-const phoneSchema = z.object({
-  phone: z.string().min(8, { message: "Veuillez saisir un numéro de téléphone valide." }),
-  password: z
-    .string()
-    .min(8, { message: "Le mot de passe doit contenir au moins 8 caractères." }),
-  confirmPassword: z.string(),
-  acceptTerms: z.boolean().refine((val) => val === true, {
-    message: "Vous devez accepter les conditions d'utilisation.",
-  }),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Les mots de passe ne correspondent pas.",
-  path: ["confirmPassword"],
-});
-
-type EmailFormValues = z.infer<typeof emailSchema>;
-type PhoneFormValues = z.infer<typeof phoneSchema>;
+import { Mail, Phone, User, ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import OTPVerification from "@/components/auth/OTPVerification";
 
 const Register = () => {
+  const { t } = useTranslation();
   const [method, setMethod] = useState<"email" | "phone">("email");
+  const [showOTP, setShowOTP] = useState(false);
+  const [verificationContact, setVerificationContact] = useState("");
   const navigate = useNavigate();
+
+  const emailSchema = z.object({
+    email: z.string().email({ message: t('validation.validEmail') }),
+    password: z
+      .string()
+      .min(8, { message: t('validation.passwordLength') }),
+    confirmPassword: z.string(),
+    acceptTerms: z.boolean().refine((val) => val === true, {
+      message: t('validation.acceptTerms'),
+    }),
+  }).refine((data) => data.password === data.confirmPassword, {
+    message: t('validation.passwordMatch'),
+    path: ["confirmPassword"],
+  });
+
+  const phoneSchema = z.object({
+    phone: z.string().min(8, { message: t('validation.validPhone') }),
+    password: z
+      .string()
+      .min(8, { message: t('validation.passwordLength') }),
+    confirmPassword: z.string(),
+    acceptTerms: z.boolean().refine((val) => val === true, {
+      message: t('validation.acceptTerms'),
+    }),
+  }).refine((data) => data.password === data.confirmPassword, {
+    message: t('validation.passwordMatch'),
+    path: ["confirmPassword"],
+  });
+
+  type EmailFormValues = z.infer<typeof emailSchema>;
+  type PhoneFormValues = z.infer<typeof phoneSchema>;
 
   const emailForm = useForm<EmailFormValues>({
     resolver: zodResolver(emailSchema),
@@ -76,33 +80,58 @@ const Register = () => {
 
   const onSubmitEmail = (data: EmailFormValues) => {
     console.log("Email registration data:", data);
-    // Here you would make an API call to register the user
-    toast.success("Inscription réussie! Redirection vers la création de profil...");
-    
-    // For demo purposes we'll simulate creating a user and redirect to profile creation
-    // In a real app, you would handle this through your authentication system
-    setTimeout(() => {
-      navigate("/create-profile");
-    }, 1500);
+    // For demo purposes, we'll trigger 2FA
+    setVerificationContact(data.email);
+    setShowOTP(true);
   };
 
   const onSubmitPhone = (data: PhoneFormValues) => {
     console.log("Phone registration data:", data);
-    // Here you would make an API call to register the user
-    toast.success("Inscription réussie! Redirection vers la création de profil...");
+    // For demo purposes, we'll trigger 2FA
+    setVerificationContact(data.phone);
+    setShowOTP(true);
+  };
+
+  const handleVerificationComplete = () => {
+    // When OTP verification is complete, proceed with registration
+    setShowOTP(false);
+    toast.success(t('auth.registrationSuccess'));
     
-    // For demo purposes we'll simulate creating a user and redirect to profile creation
+    // Redirect to profile creation
     setTimeout(() => {
       navigate("/create-profile");
     }, 1500);
   };
 
+  const handleResendCode = () => {
+    // In a real app, this would trigger a new OTP to be sent
+    console.log("Resending code to", verificationContact);
+  };
+
+  const handleCancelVerification = () => {
+    setShowOTP(false);
+  };
+
+  // Show OTP verification screen if we're in verification mode
+  if (showOTP) {
+    return (
+      <div className="container max-w-md mx-auto pt-8 pb-16">
+        <OTPVerification
+          phoneOrEmail={verificationContact}
+          onVerificationComplete={handleVerificationComplete}
+          onResendCode={handleResendCode}
+          onCancel={handleCancelVerification}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="container max-w-md mx-auto pt-8 pb-16">
       <div className="space-y-4 text-center mb-8">
-        <h1 className="text-3xl font-bold">Créer un compte</h1>
+        <h1 className="text-3xl font-bold">{t('auth.register')}</h1>
         <p className="text-gray-500">
-          Inscrivez-vous pour accéder à tous nos services médicaux
+          {t('auth.createAccountDescription')}
         </p>
       </div>
 
@@ -110,11 +139,11 @@ const Register = () => {
         <TabsList className="grid grid-cols-2 mb-8">
           <TabsTrigger value="email" className="flex items-center gap-2">
             <Mail className="h-4 w-4" />
-            Email
+            {t('auth.email')}
           </TabsTrigger>
           <TabsTrigger value="phone" className="flex items-center gap-2">
             <Phone className="h-4 w-4" />
-            Téléphone
+            {t('auth.phone')}
           </TabsTrigger>
         </TabsList>
 
