@@ -9,23 +9,7 @@ const Hero = () => {
   const { t } = useTranslation();
   
   return (
-    <section className="pt-24 pb-32 md:pt-28 md:pb-40 relative overflow-hidden">
-      {/* Background wave graphics */}
-      <div className="absolute top-0 left-0 w-1/3 h-full z-0 opacity-80">
-        <img 
-          src="/lovable-uploads/a54ea435-edb0-4bd4-8307-0c5c66400ccd.png" 
-          alt="Wave graphic" 
-          className="object-cover h-full w-full object-left"
-        />
-      </div>
-      <div className="absolute top-0 right-0 w-1/3 h-full z-0 opacity-80">
-        <img 
-          src="/lovable-uploads/a54ea435-edb0-4bd4-8307-0c5c66400ccd.png" 
-          alt="Wave graphic" 
-          className="object-cover h-full w-full object-right transform scale-x-[-1]"
-        />
-      </div>
-      
+    <section className="pt-24 pb-32 md:pt-28 md:pb-40 bg-gradient-to-b from-medical-50 to-white relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -55,22 +39,20 @@ const Hero = () => {
       <div className="container mx-auto px-4 mt-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Feature 1: New client */}
-          <div className="flex">
-            <div className="bg-medical-600 text-white p-8 rounded-l-xl">
+          <div className="flex flex-col md:flex-row rounded-xl shadow-lg overflow-hidden animate-scale-in">
+            <div className="bg-medical-600 text-white p-8 md:w-1/2">
               <h3 className="text-xl font-semibold mb-3">{t('features.newClient', 'New client')}</h3>
               <div className="text-5xl font-bold">292</div>
             </div>
-            <div className="bg-gray-100 rounded-r-xl flex-grow">
-              <img 
-                src="/placeholder.svg" 
-                alt="Doctor consultation"
-                className="w-full h-full object-cover rounded-r-xl" 
-              />
+            <div className="bg-gray-100 p-8 md:w-1/2">
+              <p className="text-gray-700">
+                {t('features.newClientDesc', 'Join our growing community of satisfied clients who trust our medical services.')}
+              </p>
             </div>
           </div>
           
           {/* Feature 2: Virtual consultation */}
-          <div className="bg-white rounded-xl p-6 shadow-md">
+          <div className="bg-white rounded-xl p-8 shadow-lg animate-scale-in stagger-1">
             <h3 className="text-2xl font-bold text-gray-900 mb-3">
               {t('features.virtualConsultation', 'Virtual consultation')}
             </h3>
